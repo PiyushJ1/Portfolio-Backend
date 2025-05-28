@@ -18,12 +18,13 @@ app.get('/', (req, res) => {
     res.send('Backend is running successfully');
 });
 
+// send message route
 app.post('/send-message', async (req, res) => {
-    console.log('Incoming message:', req.body);
-
+    // get form contents
     const { firstName, lastName, email, message } = req.body;
 
     try {
+        // auth transporter for gmail
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
@@ -31,7 +32,8 @@ app.post('/send-message', async (req, res) => {
                 pass: process.env.EMAIL_PASS
             }
         });
-
+        
+        // create message object
         const mailOptions = {
             from: email,
             to: process.env.EMAIL_USER,
@@ -39,6 +41,7 @@ app.post('/send-message', async (req, res) => {
             text: `From: ${email}\n\nMessage:\n${message}`
         };
 
+        // send mail
         await transporter.sendMail(mailOptions);
 
         res.status(200).json({ message: 'Message sent successfully' });
@@ -51,4 +54,3 @@ app.post('/send-message', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running on PORT ${PORT}`)
 });
-    
