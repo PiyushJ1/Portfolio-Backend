@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 app.use(cors({
-    origin: 'https://piyushj1.github.io'
+    origin: 'https://piyushj.dev'
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
