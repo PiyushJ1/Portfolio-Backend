@@ -1,25 +1,25 @@
-import express from 'express';
-import type { Request, Response } from 'express';
-import cors from 'cors';
-import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
+require('dotenv').config();
 
-dotenv.config();
+const express = require('express');
+const cors = require('cors');
+const nodemailer = require('nodemailer');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(cors({ origin: 'https://piyushj.dev' }));
+app.use(cors({
+    origin: 'https://piyushj.dev'
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 // check if server has connected successfully
-app.get('/', (req: Request, res: Response) => {
-    res.json('Backend running');
+app.get('/', (req, res) => {
+    res.send('Backend is running successfully');
 });
 
 // send message route
-app.post('/send-message', async (req: Request, res: Response) => {
+app.post('/send-message', async (req, res) => {
     // get form contents
     const { firstName, lastName, email, message } = req.body;
 
