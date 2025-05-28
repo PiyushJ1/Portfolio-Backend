@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 app.use(cors({
-    origin: 'https://piyushj.dev'
+    origin: 'https://portfolio-backend-production-0a2b.up.railway.app/'
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
