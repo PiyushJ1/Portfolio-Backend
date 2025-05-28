@@ -10,9 +10,8 @@ app.use(cors({
     origin: 'https://piyushj.dev'
 }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
-
-
 
 app.post('/send-message', async (req, res) => {
     console.log('Incoming message:', req.body);
