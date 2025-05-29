@@ -22,10 +22,6 @@ app.post('/send-message', async (req, res) => {
     const lastName = validator.escape(req.body.lastName || '');
     const email = validator.normalizeEmail(req.body.email || '');
     const message = validator.escape(req.body.message || '');
-    
-    if (!validator.isEmail(email)) {
-        return res.status(400).json({ error: 'Invalid email address' });
-    }
 
     try {
         // auth transporter for gmail
