@@ -1,4 +1,4 @@
-# Portfolio Contact Backend
+# Portfolio Website Backend
 
 This backend service is built with Node.js and Express to handle contact form submissions from the portfolio website. It uses Nodemailer to forward messages to a designated email address.
 
