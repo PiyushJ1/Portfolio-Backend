@@ -27,6 +27,8 @@ app.post('/send-message', async (req, res) => {
         // auth transporter for gmail
         const transporter = nodemailer.createTransport({
             service: 'gmail',
+            port: 465,
+            secure: true,
             auth: {
                 user: process.env.EMAIL_USER,
                 pass: process.env.EMAIL_PASS
@@ -46,7 +48,7 @@ app.post('/send-message', async (req, res) => {
 
         res.status(200).json({ message: 'Message sent successfully' });
     } catch (err) {
-        console.error('Error sending email:', err);
+        // 500 error code: server problem
         res.status(500).json({ error: 'Failed to send email' });
     }
 });
