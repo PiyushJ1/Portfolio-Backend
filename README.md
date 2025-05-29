@@ -35,7 +35,7 @@ Credentials are stored securely using environment variables and are never hardco
 **POST /send-message**
 
 - Expects JSON with `firstName`, `lastName`, `email`, and `message`.
-- Validates the email format and sanitizes all inputs.
+- Validates the email format and sanitises all inputs.
 - Returns HTTP 200 on success.
 - Returns HTTP 400 if the email is invalid.
 - Returns HTTP 500 if sending the email fails.
@@ -50,6 +50,6 @@ Hosted on Railway, with environment variables managed through the Railway dashbo
 
 ## Additional Notes
 
-- Input sanitization is performed using the Validator library.
+- Input sanitisation is performed using the Validator library.
 - Nodemailer is configured with secure SMTP using port 465.
 - Error handling returns appropriate HTTP status codes to the client.
