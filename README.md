@@ -24,7 +24,7 @@ The backend accepts the user's first name, last name, email, and message from th
 
 The application requires the following environment variables to authenticate with Gmail:
 - USER_EMAIL: your_email@gmail.com
-- USER_PASSL your_emaila_app_password
+- USER_PASSL your_email_app_password
 
 Credentials are stored securely using environment variables and are never hardcoded.
 
