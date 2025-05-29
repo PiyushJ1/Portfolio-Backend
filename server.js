@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
+const validator = require('validator');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
@@ -16,8 +17,15 @@ app.get('/', (req, res) => {
 
 // send message route
 app.post('/send-message', async (req, res) => {
-    // get form contents
-    const { firstName, lastName, email, message } = req.body;
+    // get form contents and validate for security
+    const firstName = validator.escape(req.body.firstName || '');
+    const lastName = validator.escape(req.body.lastName || '');
+    const email = validator.normalizeEmail(req.body.email || '');
+    const message = validator.escape(req.body.message || '');
+    
+    if (!validator.isEmail(email)) {
+        return res.status(400).json({ error: 'Invalid email address' });
+    }
 
     try {
         // auth transporter for gmail
