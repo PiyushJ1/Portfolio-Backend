@@ -1,14 +1,10 @@
-require('dotenv').config();
-
 const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(cors({
-    origin: 'https://piyushj.dev'
-}));
+app.use(cors({ origin: 'https://piyushj.dev' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
